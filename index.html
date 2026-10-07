@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tubagus Bayu | Portofolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#0f172a;color:#f8fafc;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:focus-visible{outline:2px solid #38bdf8;outline-offset:3px}
+section{min-height:100vh;padding:120px 8%;scroll-margin-top:60px}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
+.reveal.show{opacity:1;transform:none}
+h2.title{font-size:42px;margin-bottom:12px}
+.sub{color:#94a3b8;margin-bottom:40px;max-width:600px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;height:75px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,.9);backdrop-filter:blur(10px);z-index:1000;transition:.3s}
+.navbar.scrolled{height:65px;background:#0f172a;box-shadow:0 5px 20px rgba(0,0,0,.3)}
+.logo{font-size:28px;font-weight:bold}
+.logo span{color:#38bdf8}
+.nav-menu{display:flex;gap:30px}
+.nav-menu a{color:#cbd5e1;transition:.3s}
+.nav-menu a:hover{color:#38bdf8}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:28px;cursor:pointer}
+
+/* HERO */
+.hero{display:flex;align-items:center;justify-content:space-between;gap:50px;background:radial-gradient(circle at top right,rgba(56,189,248,.15),transparent 35%)}
+.hero-content{max-width:700px}
+.hero-small{color:#38bdf8;font-weight:bold;letter-spacing:4px;margin-bottom:15px}
+.hero h1{font-size:80px;line-height:1.1;margin-bottom:15px}
+.hero h2{font-size:30px;color:#94a3b8;margin-bottom:20px}
+.hero p{max-width:600px;margin-bottom:30px;color:#e2e8f0}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 28px;border-radius:8px;font-weight:bold;font-size:16px;border:2px solid #38bdf8;transition:.3s;cursor:pointer;font-family:inherit}
+.btn.primary{background:#38bdf8;color:#0f172a}
+.btn.primary:hover{background:#7dd3fc;border-color:#7dd3fc}
+.btn.ghost{background:transparent;color:#38bdf8}
+.btn.ghost:hover{background:rgba(56,189,248,.12)}
+.socials{display:flex;gap:20px;margin-top:30px}
+.socials a{color:#94a3b8;transition:.3s}
+.socials a:hover{color:#38bdf8}
+.photo{flex-shrink:0;width:340px;height:340px;border-radius:50%;border:4px solid #38bdf8;overflow:hidden;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:90px;font-weight:bold;color:#38bdf8}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px}
+.about-grid p{color:#cbd5e1;margin-bottom:16px}
+.info{background:#1e293b;border-radius:12px;padding:28px;align-self:start}
+.info dl div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #334155}
+.info dl div:last-child{border-bottom:none}
+.info dt{color:#94a3b8}
+.info dd{text-align:right}
+
+/* SKILLS */
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.skill-box{background:#1e293b;border-radius:12px;padding:26px}
+.skill-box h3{color:#38bdf8;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:#0f172a;border:1px solid #334155;padding:6px 14px;border-radius:20px;font-size:14px;color:#cbd5e1}
+
+/* PROJECTS */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.card{background:#1e293b;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.card .thumb{height:180px;background:#0f172a;display:flex;align-items:center;justify-content:center;color:#475569}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card p{color:#cbd5e1;font-size:15px}
+.card .tags{margin-top:auto}
+.links{display:flex;gap:18px;font-weight:bold;color:#38bdf8}
+.links a:hover{text-decoration:underline}
+
+/* EXPERIENCE */
+.timeline{border-left:2px solid #334155;padding-left:34px;max-width:760px}
+.item{position:relative;margin-bottom:38px}
+.item::before{content:"";position:absolute;left:-43px;top:7px;width:14px;height:14px;border-radius:50%;background:#38bdf8}
+.item .date{color:#38bdf8;font-size:14px;font-weight:bold}
+.item h3{margin:4px 0}
+.item .org{color:#94a3b8;margin-bottom:8px}
+.item p{color:#cbd5e1}
+
+/* CONTACT */
+.contact{display:flex;flex-direction:column;justify-content:center}
+.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:900px}
+.contact-list a{background:#1e293b;border-radius:12px;padding:24px;transition:.3s;display:block}
+.contact-list a:hover{background:#273449}
+.contact-list small{display:block;color:#94a3b8}
+.contact-list strong{color:#38bdf8;word-break:break-all}
+footer{text-align:center;padding:30px;color:#64748b;border-top:1px solid #1e293b}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .menu-toggle{display:block}
+  .nav-menu{position:absolute;top:100%;left:0;width:100%;flex-direction:column;gap:0;background:#0f172a;max-height:0;overflow:hidden;transition:max-height .3s}
+  .nav-menu.open{max-height:400px;box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .nav-menu a{padding:16px 8%}
+  .hero{flex-direction:column-reverse;align-items:flex-start;padding-top:130px}
+  .hero h1{font-size:48px}
+  .hero h2{font-size:22px}
+  .photo{width:220px;height:220px;font-size:60px}
+  .about-grid{grid-template-columns:1fr}
+  h2.title{font-size:32px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <a href="#home" class="logo">Bayu<span>.</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">&#9776;</button>
+  <nav class="nav-menu" id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-small">HELLO, I'M</p>
+    <h1>Tubagus Bayu</h1>
+    <h2>Informatics Student &amp; Web Developer</h2>
+    <p>Saya adalah mahasiswa Informatika yang tertarik dengan dunia website, teknologi, dan pengembangan aplikasi.</p>
+    <div class="btns">
+      <a href="#projects" class="btn primary">Lihat Project</a>
+      <!-- GANTI: taruh file CV kamu di folder cv/ dengan nama ini -->
+      <a href="cv/CV-Tubagus-Bayu.pdf" class="btn ghost" download>Download CV</a>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/Aguslebew" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/tubagus-bayu-74b732271/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:tubagusbayu91@gmail.com">Email</a>
+    </div>
+  </div>
+  <!-- GANTI: taruh foto kamu di folder images/ dengan nama foto.jpg -->
+  <div class="photo">
+    <img src="images/foto.jpeg" alt="Foto Tubagus Bayu" onerror="this.remove();this.parentNode.textContent='TB'">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <h2 class="title">About Me</h2>
+  <p class="sub">Sedikit cerita tentang saya.</p>
+  <div class="about-grid">
+    <div>
+      <!-- GANTI: tulis cerita kamu sendiri -->
+      <p>Halo, saya Tubagus Bayu, mahasiswa Informatika yang suka membangun website dari nol, mulai dari desain tampilan sampai logika di belakangnya.</p>
+      <p>Saat ini saya sedang memperdalam web development dan ingin terus belajar lewat project nyata. Saya terbuka untuk magang, kolaborasi, dan proyek freelance.</p>
+    </div>
+    <aside class="info">
+      <!-- GANTI: isi identitas asli kamu -->
+      <dl>
+        <div><dt>Nama</dt><dd>Tubagus Bayu Ayudya</dd></div>
+        <div><dt>Kampus</dt><dd>Universitas Bina Sarana Informatika</dd></div>
+        <div><dt>Jurusan</dt><dd>Informatika, semester 5</dd></div>
+        <div><dt>Lokasi</dt><dd>Jakarta Pusat, Indonesia</dd></div>
+        <div><dt>Status</dt><dd>Terbuka untuk magang</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+  <h2 class="title">Skills</h2>
+  <p class="sub">Teknologi yang saya pakai dan pelajari.</p>
+  <!-- GANTI: sesuaikan dengan skill kamu -->
+  <div class="skill-groups">
+    <div class="skill-box"><h3>Frontend</h3>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span></div></div>
+    <div class="skill-box"><h3>Backend &amp; Database</h3>
+      <div class="tags"><span>PHP</span><span>MySQL</span><span>Node.js</span></div></div>
+    <div class="skill-box"><h3>Tools</h3>
+      <div class="tags"><span>Git &amp; GitHub</span><span>VS Code</span><span>Figma</span></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <h2 class="title">Projects</h2>
+  <p class="sub">Beberapa project yang pernah saya kerjakan.</p>
+  <!-- GANTI: judul, deskripsi, tech, link demo & GitHub. Salin satu blok <article> untuk menambah project -->
+  <div class="projects">
+    <article class="card">
+      <div class="thumb"><img src="images/project1.jpg" alt="Tampilan Project 1" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Nama Project 1</h3>
+        <p>Jelaskan singkat: apa yang dibuat, masalah apa yang diselesaikan, dan peran kamu.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="links">
+          <a href="https://github.com/Aguslebew/project-1" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://link-demo-project-1.com" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="thumb"><img src="images/project2.jpg" alt="Tampilan Project 2" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Nama Project 2</h3>
+        <p>Jelaskan singkat: apa yang dibuat, masalah apa yang diselesaikan, dan peran kamu.</p>
+        <div class="tags"><span>PHP</span><span>MySQL</span></div>
+        <div class="links">
+          <a href="https://github.com/Aguslebew/project-2" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="thumb"><img src="images/project3.jpg" alt="Tampilan Project 3" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Nama Project 3</h3>
+        <p>Jelaskan singkat: apa yang dibuat, masalah apa yang diselesaikan, dan peran kamu.</p>
+        <div class="tags"><span>Node.js</span><span>API</span></div>
+        <div class="links">
+          <a href="https://github.com/Aguslebew/project-3" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+  <h2 class="title">Experience</h2>
+  <p class="sub">Pengalaman kerja, organisasi, dan pendidikan.</p>
+  <!-- GANTI: isi pengalaman asli kamu, urutkan dari yang terbaru -->
+  <div class="timeline">
+    <div class="item">
+      <span class="date">2025 - Sekarang</span>
+      <h3>Posisi / Peran</h3>
+      <div class="org">Nama Organisasi atau Perusahaan</div>
+      <p>Tulis 1-2 kalimat tentang tanggung jawab dan hasil yang kamu capai.</p>
+    </div>
+    <div class="item">
+      <span class="date">2024 - 2025</span>
+      <h3>Posisi / Peran</h3>
+      <div class="org">Nama Organisasi atau Komunitas</div>
+      <p>Tulis 1-2 kalimat tentang tanggung jawab dan hasil yang kamu capai.</p>
+    </div>
+    <div class="item">
+      <span class="date">2023 - Sekarang</span>
+      <h3>S1 Informatika</h3>
+      <div class="org">Nama Universitas</div>
+      <p>IPK [X.XX]. Mata kuliah yang relevan: Pemrograman Web, Basis Data, Struktur Data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact reveal">
+  <h2 class="title">Contact</h2>
+  <p class="sub">Tertarik berkolaborasi atau punya pertanyaan? Hubungi saya lewat salah satu kanal ini.</p>
+  <div class="contact-list">
+    <a href="mailto:tubagusbayu91@gmail.com"><small>Email</small><strong>tubagusbayu91@gmail.com</strong></a>
+    <a href="https://github.com/Aguslebew" target="_blank" rel="noopener"><small>GitHub</small><strong>github.com/Aguslebew</strong></a>
+    <a href="https://www.linkedin.com/in/tubagus-bayu-74b732271/" target="_blank" rel="noopener"><small>LinkedIn</small><strong>linkedin.com/in/tubagus-bayu-74b732271</strong></a>
+    <a href="https://wa.me/6288227825710" target="_blank" rel="noopener"><small>WhatsApp</small><strong>+62 882-2782-5710</strong></a>
+  </div>
+</section>
+
+<footer>&copy; <span id="year"></span> Tubagus Bayu. Dibuat dengan HTML, CSS, dan JavaScript.</footer>
+
+<script>
+const navbar=document.getElementById('navbar');
+const menu=document.getElementById('navMenu');
+const toggle=document.getElementById('menuToggle');
+
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>50));
+toggle.addEventListener('click',()=>menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
